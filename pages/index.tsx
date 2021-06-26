@@ -1,3 +1,5 @@
-const IndexPage = () => <div>hola</div>;
+import { BasicLayout } from "../components/Layouts/BasicLayout";
+
+const IndexPage = () => <BasicLayout>hola</BasicLayout>;
 
 export default IndexPage;
