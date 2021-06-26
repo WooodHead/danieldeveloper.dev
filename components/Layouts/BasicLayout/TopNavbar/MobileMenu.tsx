@@ -1,6 +1,6 @@
 import { Box, Stack } from "@chakra-ui/react";
 import { NavLinkProps } from "./NavLink";
-import { Link } from "./types";
+import { Link } from "../../../../types/types";
 
 interface MobileMenuProps {
   LinkComponent: React.FC<NavLinkProps>;

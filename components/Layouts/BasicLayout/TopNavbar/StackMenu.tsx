@@ -14,7 +14,7 @@ import { BiChevronDown } from "react-icons/bi";
 import { BsCheckCircle, BsBook } from "react-icons/bs";
 import { MdTimeline } from "react-icons/md";
 import NextLink from "next/link";
-import { Link } from "./types";
+import { Link } from "../../../../types/types";
 
 interface StackMenuProps {
   menuAttributes: {

@@ -1,6 +1,6 @@
 import NextLink from "next/link";
-import { Link as ChakraLink, useColorModeValue } from "@chakra-ui/react";
-import { Link } from "./types";
+import { Icon, Link as ChakraLink, useColorModeValue } from "@chakra-ui/react";
+import { Link } from "../../../../types/types";
 
 export interface NavLinkProps {
   link: Link;
@@ -28,6 +28,14 @@ export const NavLink: React.FC<NavLinkProps> = ({ link, onClose }) => {
         }}
         onClick={() => onClose()}
       >
+        {link.icon && (
+          <Icon
+            marginRight="2"
+            as={link.icon}
+            size={18}
+            color={linkProperties.color}
+          />
+        )}
         {link.name}
       </ChakraLink>
     </NextLink>

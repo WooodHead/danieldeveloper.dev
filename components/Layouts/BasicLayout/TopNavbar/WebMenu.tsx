@@ -13,7 +13,7 @@ import { FaGithub } from "react-icons/fa";
 // import { ColorModeSwitcher } from "../ui/ColorModeSwitcher";
 // import UserIcon from "assets/images/user_icon.png";
 import NextLink from "next/link";
-import { Link } from "./types";
+import { Link } from "../../../../types/types";
 import { NavLinkProps } from "./NavLink";
 import { StackMenu } from "./StackMenu";
 
