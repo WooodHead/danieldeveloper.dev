@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import {
   Box,
   Flex,
@@ -5,17 +6,17 @@ import {
   HStack,
   Link as ChakraLink,
   IconButton,
+  Tooltip,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose, AiTwotoneThunderbolt } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
-// import { ColorModeSwitcher } from "../ui/ColorModeSwitcher";
-// import UserIcon from "assets/images/user_icon.png";
-import NextLink from "next/link";
+import { ColorModeSwitcher } from "../../../Common";
 import { Link } from "../../../../types/types";
 import { NavLinkProps } from "./NavLink";
 import { StackMenu } from "./StackMenu";
+import { accounts } from "../../../../config/accounts";
 
 interface WebMenuProps {
   LinkComponent: React.FC<NavLinkProps>;
@@ -44,12 +45,7 @@ export const WebMenu: React.FC<WebMenuProps> = ({
       <HStack spacing={8} alignItems={"center"}>
         <Box>
           <NextLink href={"/"} passHref>
-            <Avatar
-              as={ChakraLink}
-              size={"sm"}
-              // src={UserIcon}
-              src={"https://avatars2.githubusercontent.com/u/37842853?v=4"}
-            />
+            <Avatar as={ChakraLink} size={"sm"} src={accounts.github.avatar} />
           </NextLink>
         </Box>
         <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
@@ -70,19 +66,24 @@ export const WebMenu: React.FC<WebMenuProps> = ({
         </HStack>
       </HStack>
       <Flex alignItems={"center"}>
-        <IconButton
-          as={ChakraLink}
-          href={"https://github.com/Ranacode"}
-          size={"md"}
-          icon={<FaGithub />}
-          aria-label={"Github account"}
-          bg={useColorModeValue("white", "gray.700")}
-          _hover={{
-            textDecoration: "none",
-            bg: useColorModeValue("gray.200", "gray.900"),
-          }}
-        />
-        {/* <ColorModeSwitcher justifySelf="flex-end" /> */}
+        <Tooltip label="Github Account" aria-label="Github Account">
+          <IconButton
+            as={ChakraLink}
+            href={accounts.github.profile}
+            target="_blank"
+            rel="noopener noreferrer"
+            fontSize="1.5em"
+            size="lg"
+            icon={<FaGithub />}
+            aria-label={"Github account"}
+            bg={useColorModeValue("white", "gray.700")}
+            _hover={{
+              textDecoration: "none",
+              bg: useColorModeValue("gray.200", "gray.900"),
+            }}
+          />
+        </Tooltip>
+        <ColorModeSwitcher justifySelf="flex-end" />
       </Flex>
     </>
   );

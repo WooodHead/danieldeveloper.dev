@@ -11,8 +11,6 @@ import {
 } from "@chakra-ui/react";
 
 import { BiChevronDown } from "react-icons/bi";
-import { BsCheckCircle, BsBook } from "react-icons/bs";
-import { MdTimeline } from "react-icons/md";
 import NextLink from "next/link";
 import { Link } from "../../../../types/types";
 

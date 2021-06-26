@@ -19,7 +19,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     maxW={800}
     display={["inherit", "inherit", "none"]}
   >
-    <Stack as={"nav"} spacing={4}>
+    <Stack as={"nav"} spacing={4} justify="center">
       {links
         .filter((link) => link.mobile)
         .map((link) => link.nested || link)
