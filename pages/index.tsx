@@ -1,10 +1,5 @@
-import { BasicLayout } from "../components/Layouts/BasicLayout";
 import { Home } from "../components/Home/";
 
-const IndexPage = () => (
-  <BasicLayout>
-    <Home />
-  </BasicLayout>
-);
+const IndexPage = () => <Home />;
 
 export default IndexPage;
