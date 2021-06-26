@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { TopNavbar } from ".";
+import { TopNavbar, Footer } from ".";
 
 const BasicLayout: React.FC = ({ children }) => {
   return (
@@ -16,6 +16,7 @@ const BasicLayout: React.FC = ({ children }) => {
           {children}
         </Box>
       </Box>
+      <Footer />
     </>
   );
 };

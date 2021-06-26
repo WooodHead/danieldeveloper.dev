@@ -1,9 +1,9 @@
 import { BasicLayout } from "../components/Layouts/BasicLayout";
-import { HeaderDescription } from "../components/Home/";
+import { Home } from "../components/Home/";
 
 const IndexPage = () => (
   <BasicLayout>
-    <HeaderDescription />
+    <Home />
   </BasicLayout>
 );
 
