@@ -3,31 +3,19 @@ import {
   Flex,
   Avatar,
   HStack,
-  Button,
-  Text,
   Link as ChakraLink,
   IconButton,
-  useDisclosure,
   useColorModeValue,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Stack,
-  Icon,
 } from "@chakra-ui/react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiTwotoneThunderbolt } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 // import { ColorModeSwitcher } from "../ui/ColorModeSwitcher";
 // import UserIcon from "assets/images/user_icon.png";
-import { AiTwotoneThunderbolt } from "react-icons/ai";
-import { BiChevronDown } from "react-icons/bi";
-import { BsCheckCircle } from "react-icons/bs";
-import { MdTimeline } from "react-icons/md";
-import { BsBook } from "react-icons/bs";
 import NextLink from "next/link";
-import { Link, NavLinkProps } from ".";
+import { Link } from "./types";
+import { NavLinkProps } from "./NavLink";
+import { StackMenu } from "./StackMenu";
 
 interface WebMenuProps {
   LinkComponent: React.FC<NavLinkProps>;
@@ -44,11 +32,6 @@ export const WebMenu: React.FC<WebMenuProps> = ({
   onOpen,
   onClose,
 }) => {
-  const menuProps = {
-    bg: useColorModeValue("gray.200", "gray.900"),
-    color: useColorModeValue("blue.500", "blue.200"),
-  };
-
   return (
     <>
       <IconButton
@@ -70,91 +53,26 @@ export const WebMenu: React.FC<WebMenuProps> = ({
           </NextLink>
         </Box>
         <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-          {links.map((link) => (
-            <LinkComponent key={link.name} link={link} onClose={onClose} />
-          ))}
-          <Menu isLazy>
-            {({ isOpen, onClose }) => (
-              <>
-                <MenuButton
-                  as={Button}
-                  variant="ghost"
-                  size="sm"
-                  px={2}
-                  py={1.5}
-                  fontSize={"1em"}
-                  rounded={"md"}
-                  height={"auto "}
-                  _hover={menuProps}
-                  _expanded={menuProps}
-                  _focus={{ boxShadow: "outline" }}
-                  rightIcon={<BiChevronDown size={18} />}
-                >
-                  Links
-                </MenuButton>
-                <MenuList zIndex={5}>
-                  <NextLink href={"/tech-stack"} passHref>
-                    <ChakraLink onClick={onClose}>
-                      <MenuItem>
-                        <HStack>
-                          <Icon
-                            as={AiTwotoneThunderbolt}
-                            size={18}
-                            color={menuProps.color}
-                          />
-                          <Text>Tech Stack</Text>
-                        </HStack>
-                      </MenuItem>
-                    </ChakraLink>
-                  </NextLink>
-                  <NextLink href={"/open-source"} passHref>
-                    <ChakraLink onClick={onClose}>
-                      <MenuItem>
-                        <HStack>
-                          <Icon as={BsBook} size={18} color={menuProps.color} />
-                          <Text>Open Source</Text>
-                        </HStack>
-                      </MenuItem>
-                    </ChakraLink>
-                  </NextLink>
-                  <NextLink href={"/developer-story"} passHref>
-                    <ChakraLink onClick={onClose}>
-                      <MenuItem>
-                        <HStack>
-                          <Icon
-                            as={MdTimeline}
-                            size={18}
-                            color={menuProps.color}
-                          />
-                          <Text>Developer Story</Text>
-                        </HStack>
-                      </MenuItem>
-                    </ChakraLink>
-                  </NextLink>
-                  <NextLink href={"/achievements"} passHref>
-                    <ChakraLink onClick={onClose}>
-                      <MenuItem>
-                        <HStack>
-                          <Icon
-                            as={BsCheckCircle}
-                            size={18}
-                            color={menuProps.color}
-                          />
-                          <Text>Achievements</Text>
-                        </HStack>
-                      </MenuItem>
-                    </ChakraLink>
-                  </NextLink>
-                </MenuList>
-              </>
-            )}
-          </Menu>
+          {links.map((link) => {
+            return link.nested ? (
+              <StackMenu
+                key={link.name}
+                menuAttributes={{
+                  bg: useColorModeValue("gray.200", "gray.900"),
+                  color: useColorModeValue("blue.500", "blue.200"),
+                }}
+                links={link.nested}
+              />
+            ) : (
+              <LinkComponent key={link.name} link={link} onClose={onClose} />
+            );
+          })}
         </HStack>
       </HStack>
       <Flex alignItems={"center"}>
         <IconButton
           as={ChakraLink}
-          href={"https://github.com/MA-Ahmad"}
+          href={"https://github.com/Ranacode"}
           size={"md"}
           icon={<FaGithub />}
           aria-label={"Github account"}
