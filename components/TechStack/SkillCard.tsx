@@ -11,8 +11,9 @@ import {
 } from "@chakra-ui/react";
 import { usePalette } from "react-palette";
 import { MotionBox, PageTransitions } from "../Common";
+import { TechSkill } from "../../config/skills";
 
-const SkillCard = ({ name, image, link, description }) => {
+const SkillCard: React.FC<TechSkill> = ({ name, description, link, image }) => {
   const { data, loading } = usePalette(image);
 
   return (
