@@ -34,7 +34,7 @@ export const Footer: React.FC = () => {
           fontSize="sm"
           color={useColorModeValue("gray.500", "gray.200")}
         >
-          © {new Date().getFullYear()} Daniel Romero
+          🔥 {new Date().getFullYear()} Daniel Romero
         </Text>
 
         <Box textAlign="center">

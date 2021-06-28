@@ -14,7 +14,7 @@ export const GITHUB: SocialAccount = {
   key: "github",
   title: "Github Account",
   avatar: "https://avatars.githubusercontent.com/u/24314364?v=4",
-  profile: "https://github.com/Ranacode",
+  profile: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USER}`,
   color: "gray",
   icon: FaGithub,
 };
@@ -22,7 +22,7 @@ export const GITHUB: SocialAccount = {
 export const LINKEDIN: SocialAccount = {
   key: "linkedin",
   title: "Linkedin Account",
-  profile: "https://www.linkedin.com/in/romerodeveloper",
+  profile: `https://www.linkedin.com/in/${process.env.NEXT_PUBLIC_LINKEDIN_USER}`,
   color: "linkedin",
   icon: FaLinkedin,
 };
