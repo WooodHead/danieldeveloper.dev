@@ -1,16 +1,37 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPageContext } from "next";
 import { GithubRepository } from "../../lib/network";
-
-interface ProjectsProps {
-  projects: [];
+import { GithubRepositoryType } from "../../lib/network/types/GithubRepositoryType";
+import { ProjectCardSkeleton, Projects } from "../../components/Projects";
+import { PresentationLayout } from "../../components/Layouts/PresentationLayout";
+interface ProjectsPageProps {
+  projects: GithubRepositoryType[];
+  skeletonLoaders: number;
 }
 
-const Project: React.FC<ProjectsProps> = ({ projects }) => {
-  console.log("props", projects);
-  return <div>proyectos</div>;
+const ProjectsPage: React.FC<ProjectsPageProps> = ({
+  projects = [],
+  skeletonLoaders = 8,
+}) => {
+  return (
+    <PresentationLayout
+      title="Open Source Projects"
+      subtitle="This page lists some of the open source repositories I have published
+    or contributed to."
+    >
+      {projects.length > 0 ? (
+        <Projects projects={projects} />
+      ) : (
+        [...Array(skeletonLoaders).keys()].map((index) => (
+          <ProjectCardSkeleton key={index} />
+        ))
+      )}
+    </PresentationLayout>
+  );
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (
+  context: NextPageContext
+) => {
   const githubApi = new GithubRepository();
 
   const response = await githubApi.getUserRepositories({
@@ -24,4 +45,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   };
 };
 
-export default Project;
+export default ProjectsPage;

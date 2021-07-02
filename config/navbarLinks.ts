@@ -5,7 +5,7 @@ import { MdPermIdentity, MdTimeline } from "react-icons/md";
 
 export const navbarLinks: Link[] = [
   { name: "Blog", path: "/blog", mobile: true, icon: BsBook },
-  { name: "About", path: "/about", mobile: true, icon: MdPermIdentity },
+  { name: "Projects", path: "/projects", mobile: true, icon: MdPermIdentity },
   {
     name: "Links",
     path: "",

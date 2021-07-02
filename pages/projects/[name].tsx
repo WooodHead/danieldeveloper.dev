@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps, NextPageContext } from "next";
 import { GithubRepository } from "../../lib/network";
 
 interface ProjectsProps {
@@ -25,7 +25,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
+export const getStaticPaths: GetStaticPaths = async (
+  context: NextPageContext
+) => {
   const githubApi = new GithubRepository();
 
   const response = await githubApi.getUserRepositories({

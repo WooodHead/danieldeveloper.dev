@@ -1,5 +1,6 @@
 import { AxiosInstance, AxiosResponse } from "axios";
 import ApiRepository from "./network";
+import { GithubRepositoryType } from "./types/GithubRepositoryType";
 
 interface GithubUsername {
   username: string;
@@ -18,7 +19,7 @@ export class GithubRepository {
 
   constructor() {
     this.githubRepo = ApiRepository({
-      baseURL: process.env.NEXT_PUBLIC_GITHUB_API_URL,
+      baseURL: process.env.GITHUB_API_URL,
       headers: {
         Accept: "application/vnd.github.v3+json",
         ["User-Agent"]: process.env.NEXT_PUBLIC_GITHUB_USER,
@@ -34,7 +35,9 @@ export class GithubRepository {
   async getUserRepositories({
     username,
     perPage = 30,
-  }: GetUserRepositoriesRequest): Promise<AxiosResponse> {
+  }: GetUserRepositoriesRequest): Promise<
+    AxiosResponse<GithubRepositoryType[]>
+  > {
     return await this.githubRepo.get(
       `/users/${username}/repos?per_page=${perPage}`
     );
@@ -43,7 +46,7 @@ export class GithubRepository {
   async getUserRepository({
     username,
     repository,
-  }: GetUserRepositoryRequest): Promise<AxiosResponse> {
+  }: GetUserRepositoryRequest): Promise<AxiosResponse<GithubRepository>> {
     return await this.githubRepo.get(`/repos/${username}/${repository}`);
   }
 }
