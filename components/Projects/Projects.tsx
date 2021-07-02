@@ -11,7 +11,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   return (
     <PageTransitions.PageSlideFade>
       <PageTransitions.StaggerChildren>
-        <SimpleGrid columns={[2, 2, 3]} spacing={4} mt={12}>
+        <SimpleGrid columns={[1, 2, 2]} spacing={4} mt={12}>
           {projects.map((project) => (
             <MotionBox whileHover={{ y: -5 }} key={project.name}>
               <ProjectCard project={project} />

@@ -1,3 +1,10 @@
+export enum ProgrammingLanguages {
+  react = "React",
+  javascript = "Javascript",
+  typescript = "Typescript",
+  php = "PHP",
+}
+
 export enum SkillType {
   FRONTEND = "FRONTEND",
   BACKEND = "BACKEND",
