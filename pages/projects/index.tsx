@@ -16,7 +16,7 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
     <PresentationLayout
       title="Open Source Projects"
       subtitle="This page lists some of the open source repositories I have published
-    or contributed to."
+      or contributed to."
     >
       {projects.length > 0 ? (
         <Projects projects={projects} />

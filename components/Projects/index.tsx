@@ -1,5 +1,10 @@
 import ProjectCardSkeleton from "./ProjectCardSkeleton";
-import ProjectCard from "./ProjectCard";
+import ProjectCardDisplay from "./ProjectCardDisplay";
 import Projects from "./Projects";
+import { GithubRepositoryType } from "../../lib/network/types/GithubRepositoryType";
 
-export { Projects, ProjectCard, ProjectCardSkeleton };
+export interface ProjectCardProps {
+  project: GithubRepositoryType;
+}
+
+export { Projects, ProjectCardDisplay, ProjectCardSkeleton };

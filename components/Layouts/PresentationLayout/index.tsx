@@ -2,15 +2,22 @@ import { Tooltip, IconButton, Text, useColorModeValue } from "@chakra-ui/react";
 import { VStack, HStack } from "@chakra-ui/layout";
 import { PageTransitions, Header } from "../../../components/Common";
 
+type Icon = {
+  tooltip: string;
+  iconComponent: React.FC;
+  onClick?: () => void;
+};
 interface PresentationLayoutProps {
   title: string;
   subtitle: string;
+  icons?: Icon[];
 }
 
 export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
   children,
   title,
   subtitle,
+  icons = [],
 }) => {
   return (
     <PageTransitions.PageSlideFade>
@@ -19,30 +26,22 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
           <Header underlineColor="#06b6d4" mt={0} mb={0}>
             {title}
           </Header>
-          {/* <HStack>
-          <Tooltip hasArrow label="Live github repos" placement="top">
-            <IconButton
-              aria-label={"live"}
-              size="md"
-              colorScheme={"linkedin"}
-              icon={<RiSignalTowerLine />}
-              isActive={activeTab === "live"}
-              onClick={() => handleClick("live")}
-              {...iconProps}
-            />
-          </Tooltip>
-          <Tooltip hasArrow label="Local github repos" placement="top">
-            <IconButton
-              aria-label={"live"}
-              size="md"
-              colorScheme={"linkedin"}
-              icon={<RiWifiOffLine />}
-              isActive={activeTab === "offline"}
-              onClick={() => handleClick("offline")}
-              {...iconProps}
-            />
-          </Tooltip>
-        </HStack> */}
+
+          <HStack>
+            {icons.map((icon) => (
+              <Tooltip hasArrow label={icon.tooltip} placement="top">
+                <IconButton
+                  aria-label={"live"}
+                  size="md"
+                  colorScheme={"linkedin"}
+                  icon={<icon.iconComponent />}
+                  onClick={icon.onClick}
+                  variant="ghost"
+                  isRound
+                />
+              </Tooltip>
+            ))}
+          </HStack>
         </HStack>
         <Text
           color={useColorModeValue("gray.500", "gray.200")}
@@ -51,12 +50,6 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
           {subtitle}
         </Text>
       </VStack>
-      {/* {activeTab === "live" ? (
-      <LiveData />
-    ) : (
-      <OfflineData repositories={repositories} />
-    )} */}
-
       {children}
     </PageTransitions.PageSlideFade>
   );

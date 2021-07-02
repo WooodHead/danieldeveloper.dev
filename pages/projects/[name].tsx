@@ -6,7 +6,6 @@ interface ProjectsProps {
 }
 
 const Project: React.FC<ProjectsProps> = ({ project }) => {
-  console.log("project INDIVIDUAL ", project);
   return <div>project</div>;
 };
 

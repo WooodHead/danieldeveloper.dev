@@ -1,5 +1,7 @@
+import Link from "next/link";
 import {
   Box,
+  Divider,
   useColorModeValue,
   VStack,
   Text,
@@ -8,25 +10,25 @@ import {
   Icon,
   Flex,
   Tooltip,
+  Button,
+  IconButton,
 } from "@chakra-ui/react";
 import { MotionBox, tagColorByLanguage } from "../Common";
 import { BiGitRepoForked, BiStar } from "react-icons/bi";
 import { FiGithub } from "react-icons/fi";
+import { ProjectCardProps } from ".";
+import { MdScreenShare, MdLink } from "react-icons/md";
 
-import { GithubRepositoryType } from "../../lib/network/types/GithubRepositoryType";
-
-interface ProjectCardProps {
-  project: GithubRepositoryType;
-}
-
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCardDisplay: React.FC<ProjectCardProps> = ({ project }) => {
   return (
     <MotionBox whileHover={{ y: -5 }}>
       <Box
+        cursor="pointer"
         size="xl"
         py={2}
         px={[2, 4]}
         mt={2}
+        minHeight="175px"
         rounded="xl"
         borderWidth="1px"
         bg={useColorModeValue("white", "gray.800")}
@@ -43,11 +45,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 <HStack cursor={"pointer"}>
                   <Icon as={FiGithub} boxSize="0.9em" mt={"1px"} />
                   <Text
+                    as="a"
                     fontSize="sm"
                     noOfLines={1}
                     fontWeight="600"
                     align="left"
                     color={"blue.500"}
+                    href={project.html_url}
+                    rel="noopener noreferrer"
+                    target="_blank"
                   >
                     {project.full_name}
                   </Text>
@@ -87,15 +93,58 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               </Flex>
             )}
           </VStack>
-          <Box>
+          <Box marginY="5">
             <Text color="gray.500" fontSize="sm" noOfLines={2} textAlign="left">
               {project.description}
             </Text>
-          </Box>{" "}
+          </Box>
+          <Divider />
+          <Box minWidth="100%">
+            <HStack spacing="1" justify="flex-end" alignItems="center">
+              <Link href={`/projects/${project.name}`}>
+                <Tooltip
+                  hasArrow
+                  label={`See details of project ${project.name}`}
+                  placement="bottom"
+                >
+                  <IconButton
+                    size="lg"
+                    fontSize="1.5em"
+                    variant="ghost"
+                    color="current"
+                    marginLeft="3"
+                    icon={<MdLink />}
+                    aria-label={`See details of project ${project.name}`}
+                    _hover={{
+                      bg: useColorModeValue("gray.200", "gray.900"),
+                    }}
+                  />
+                </Tooltip>
+              </Link>
+              <Tooltip
+                hasArrow
+                label={`${project.name} LIVE DEMO`}
+                placement="bottom"
+              >
+                <IconButton
+                  size="lg"
+                  fontSize="1.5em"
+                  variant="ghost"
+                  color="current"
+                  marginLeft="3"
+                  icon={<MdScreenShare />}
+                  aria-label={`Visit the project ${project.name}} live demo`}
+                  _hover={{
+                    bg: useColorModeValue("gray.200", "gray.900"),
+                  }}
+                />
+              </Tooltip>
+            </HStack>
+          </Box>
         </VStack>
       </Box>
     </MotionBox>
   );
 };
 
-export default ProjectCard;
+export default ProjectCardDisplay;
