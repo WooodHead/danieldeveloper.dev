@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Flex, Avatar, Box } from "@chakra-ui/react";
 import { Header, MotionBox, MotionFlex } from "../../components/Common";
 import { GITHUB } from "../../config/accounts";
@@ -54,7 +55,7 @@ const HeaderDescription: React.FC<HeaderDescriptionProps> = ({
         Hey!
       </Header>
       <Box as="h2" fontSize="2xl" fontWeight="400" textAlign="left">
-        My name in this life is{" "}
+        My name is{" "}
         <Box as="strong" fontWeight="600">
           Daniel Romero
         </Box>{" "}
@@ -68,9 +69,9 @@ const HeaderDescription: React.FC<HeaderDescriptionProps> = ({
         </Box>
       </Box>
       <Box as="h2" fontSize="2xl" fontWeight="400" mt={5} textAlign="left">
-        This is the place where I want to share all my knowledge and hopefully
-        make you jump to the next level in your programming career while
-        enjoying life at the same time.
+        You can take a look at my <Link href="/projects">latest projects</Link>{" "}
+        or read my <Link href="/blog">blog posts</Link> where you might find
+        something interesting for you at the moment.
         <Box as="span" whiteSpace="nowrap">
           💻😁{" "}
         </Box>

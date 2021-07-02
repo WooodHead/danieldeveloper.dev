@@ -102,43 +102,32 @@ const ProjectCardDisplay: React.FC<ProjectCardProps> = ({ project }) => {
           <Box minWidth="100%">
             <HStack spacing="1" justify="flex-end" alignItems="center">
               <Link href={`/projects/${project.name}`}>
-                <Tooltip
-                  hasArrow
-                  label={`See details of project ${project.name}`}
-                  placement="bottom"
-                >
-                  <IconButton
-                    size="lg"
-                    fontSize="1.5em"
-                    variant="ghost"
-                    color="current"
-                    marginLeft="3"
-                    icon={<MdLink />}
-                    aria-label={`See details of project ${project.name}`}
-                    _hover={{
-                      bg: useColorModeValue("gray.200", "gray.900"),
-                    }}
-                  />
-                </Tooltip>
-              </Link>
-              <Tooltip
-                hasArrow
-                label={`${project.name} LIVE DEMO`}
-                placement="bottom"
-              >
                 <IconButton
                   size="lg"
                   fontSize="1.5em"
                   variant="ghost"
                   color="current"
                   marginLeft="3"
-                  icon={<MdScreenShare />}
-                  aria-label={`Visit the project ${project.name}} live demo`}
+                  icon={<MdLink />}
+                  aria-label={`See details of project ${project.name}`}
                   _hover={{
                     bg: useColorModeValue("gray.200", "gray.900"),
                   }}
                 />
-              </Tooltip>
+              </Link>
+
+              <IconButton
+                size="lg"
+                fontSize="1.5em"
+                variant="ghost"
+                color="current"
+                marginLeft="3"
+                icon={<MdScreenShare />}
+                aria-label={`Visit the project ${project.name}} live demo`}
+                _hover={{
+                  bg: useColorModeValue("gray.200", "gray.900"),
+                }}
+              />
             </HStack>
           </Box>
         </VStack>

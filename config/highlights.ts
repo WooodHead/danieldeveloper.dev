@@ -1,7 +1,7 @@
 export type HighLight = {
   href: string;
   title: string;
-  badge: {
+  badge?: {
     color: string;
     text: string;
   };
@@ -15,5 +15,9 @@ export const highLights: HighLight[] = [
       color: "green",
       text: "New",
     },
+  },
+  {
+    href: "/projects",
+    title: "Open Source Projects",
   },
 ];

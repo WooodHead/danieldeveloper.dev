@@ -61,9 +61,11 @@ const Highlights: React.FC<HighLightsProps> = ({
               <NextLink href={href} passHref>
                 <Link>
                   {title}
-                  <Badge ml="1" colorScheme={badge.color}>
-                    {badge.text}
-                  </Badge>
+                  {badge && (
+                    <Badge ml="1" colorScheme={badge.color}>
+                      {badge.text}
+                    </Badge>
+                  )}
                 </Link>
               </NextLink>
             </ListItem>

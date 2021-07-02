@@ -1,5 +1,5 @@
 import HeaderDescription from "./HeaderDescription";
-import Highlights from "./HighLights";
+import Highlights from "./Highlights";
 import { highLights } from "../../config/highlights";
 import { Flex } from "@chakra-ui/react";
 

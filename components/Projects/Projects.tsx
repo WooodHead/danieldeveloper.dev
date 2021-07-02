@@ -5,7 +5,6 @@ import { MotionBox, PageTransitions } from "../Common";
 
 interface ProjectsProps {
   projects: GithubRepositoryType[];
-  displayOption: "card" | "grid";
 }
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
