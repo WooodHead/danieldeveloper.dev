@@ -4,6 +4,8 @@ import {
   cacheAdapterEnhancer,
 } from "axios-extensions";
 
+export { axios };
+
 const ApiRepository = (config?: AxiosRequestConfig): AxiosInstance => {
   const defaultHeaders = {
     "Cache-Control": "no-cache",

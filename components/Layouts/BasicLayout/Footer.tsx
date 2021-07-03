@@ -8,6 +8,7 @@ import {
   Flex,
 } from "@chakra-ui/react";
 import { accounts } from "../../../config/accounts";
+import { NowPlaying } from "../../Spotify";
 
 export const Footer: React.FC = () => {
   return (
@@ -36,6 +37,8 @@ export const Footer: React.FC = () => {
         >
           🔥 {new Date().getFullYear()} Daniel Romero
         </Text>
+
+        <NowPlaying />
 
         <Box textAlign="center">
           {accounts.map((account) => (

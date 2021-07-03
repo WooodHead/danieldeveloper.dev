@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosResponse } from "axios";
-import ApiRepository from "./network";
-import { GithubRepositoryType } from "./types/GithubRepositoryType";
+import ApiRepository from "../network";
+import { GithubRepositoryType } from "../types/GithubRepositoryType";
 
 interface GithubUsername {
   username: string;
