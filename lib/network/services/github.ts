@@ -14,7 +14,7 @@ interface GetUserRepositoryRequest extends GithubUsername {
   repository: string;
 }
 
-export class GithubRepository {
+export default class GithubRepository {
   public githubRepo: AxiosInstance;
 
   constructor() {

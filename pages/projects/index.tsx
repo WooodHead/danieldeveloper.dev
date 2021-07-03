@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPageContext } from "next";
-import { GithubRepository } from "../../lib/network";
+import { GithubRepository } from "../../lib/network/services";
 import { GithubRepositoryType } from "../../lib/network/types/GithubRepositoryType";
 import { ProjectCardSkeleton, Projects } from "../../components/Projects";
 import { PresentationLayout } from "../../components/Layouts/PresentationLayout";

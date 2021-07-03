@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps, NextPageContext } from "next";
-import { GithubRepository } from "../../lib/network";
+import { GithubRepository } from "../../lib/network/services";
 
 interface ProjectsProps {
   project: object;

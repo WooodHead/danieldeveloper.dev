@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { handleAxiosError } from "../../lib/network/network";
-import { SpotifyRepository } from "../../lib/network/services/spotify";
+import { SpotifyRepository } from "../../lib/network/services";
 
 export const NowPlaying: React.FC = () => {
   const spotifyRepo = new SpotifyRepository();

@@ -69,7 +69,7 @@ export enum SpotifyTrackTypes {
   tracks = "tracks",
 }
 
-export class SpotifyRepository {
+export default class SpotifyRepository {
   public spotifyRepo: AxiosInstance;
 
   protected NOW_PLAYING_ENDPOINT = "/me/player/currently-playing";
