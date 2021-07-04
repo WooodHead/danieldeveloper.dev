@@ -1,5 +1,6 @@
 // import App from "next/app";
 import type { AppProps /*, AppContext */ } from "next/app";
+import NextNProgress from "nextjs-progressbar";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "../styles/theme";
 import { BasicLayout } from "../components/Layouts/BasicLayout";
@@ -7,6 +8,7 @@ import { BasicLayout } from "../components/Layouts/BasicLayout";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
+      <NextNProgress options={{ easing: "ease", speed: 500 }} />
       <BasicLayout>
         <Component {...pageProps} />
       </BasicLayout>

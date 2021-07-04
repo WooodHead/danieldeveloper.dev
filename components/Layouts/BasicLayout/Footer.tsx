@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
           🔥 {new Date().getFullYear()} Daniel Romero
         </Text>
 
-        <NowPlaying />
+        {/* <NowPlaying /> */}
 
         <Box textAlign="center">
           {accounts.map((account) => (
