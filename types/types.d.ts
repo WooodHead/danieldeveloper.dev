@@ -7,3 +7,13 @@ export type Link = {
   mobile?: boolean;
   nested?: Link[];
 };
+
+export type PostMatter = {
+  title: string;
+  summary: string;
+  publishedAt: string;
+  slug: string;
+  meta: any;
+  isNew?: boolean;
+  image?: string;
+};

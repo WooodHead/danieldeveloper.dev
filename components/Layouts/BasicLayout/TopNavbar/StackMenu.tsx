@@ -9,7 +9,6 @@ import {
   MenuItem,
   Icon,
 } from "@chakra-ui/react";
-
 import { BiChevronDown } from "react-icons/bi";
 import NextLink from "next/link";
 import { Link } from "../../../../types/types";
@@ -30,6 +29,7 @@ export const StackMenu: React.FC<StackMenuProps> = ({
     {({ isOpen, onClose }) => (
       <>
         <MenuButton
+          id="menu-button"
           as={Button}
           variant="ghost"
           size="sm"

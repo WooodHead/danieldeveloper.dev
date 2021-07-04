@@ -35,6 +35,7 @@ export const WebMenu: React.FC<WebMenuProps> = ({
   return (
     <>
       <IconButton
+        id="open-menu"
         size={"md"}
         icon={isOpen ? <AiOutlineClose /> : <GiHamburgerMenu />}
         aria-label={"Open Menu"}
@@ -72,6 +73,7 @@ export const WebMenu: React.FC<WebMenuProps> = ({
             aria-label={account.title}
           >
             <IconButton
+              id="profile-button"
               as={ChakraLink}
               href={account.profile}
               target="_blank"
