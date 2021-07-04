@@ -1,4 +1,4 @@
-import React from "react";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 export type Link = {
   name: string;
@@ -17,3 +17,10 @@ export type PostMatter = {
   isNew?: boolean;
   image?: string;
 };
+
+export interface MDXPost {
+  post: {
+    mdxSource: MDXRemoteSerializeResult;
+    frontMatter: PostMatter;
+  };
+}

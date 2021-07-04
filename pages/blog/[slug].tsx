@@ -1,17 +1,9 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { getFileBySlug, getFiles } from "../../lib/mdx";
-import { PostMatter } from "../../types/types";
+import { MDXPost } from "../../types/types";
 import MDXComponents from "../../components/MDX";
 
-interface PostProps {
-  post: {
-    mdxSource: MDXRemoteSerializeResult;
-    frontMatter: PostMatter;
-  };
-}
-
-const Post: React.FC<PostProps> = ({ post: { mdxSource, frontMatter } }) => {
-  console.log("blog post ", frontMatter);
+const Post: React.FC<MDXPost> = ({ post: { mdxSource, frontMatter } }) => {
   return (
     <div>
       <MDXRemote {...mdxSource} components={{ ...MDXComponents }} />
