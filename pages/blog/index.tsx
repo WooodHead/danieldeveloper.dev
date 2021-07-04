@@ -3,9 +3,10 @@ import PostCard from "../../components/Blog/PostCard";
 import { MotionBox } from "../../components/Common";
 import { PresentationLayout } from "../../components/Layouts/PresentationLayout";
 import { getAllFilesFrontMatter } from "../../lib/mdx";
+import { PostMatter } from "../../types/types";
 
 interface BlogPageProps {
-  posts: any[];
+  posts: PostMatter[];
 }
 
 const BlogPage: React.FC<BlogPageProps> = ({ posts }) => {
