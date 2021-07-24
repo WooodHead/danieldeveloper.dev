@@ -7,6 +7,8 @@ export default class Document extends NextDocument {
     return (
       <Html>
         <Head>
+          <meta content="#ffffff" name="theme-color" />
+          <meta content="#ffffff" name="msapplication-TileColor" />
           <link
             rel="preload"
             href="/fonts/playfair-display-v22-latin/playfair-display-v22-latin-500.woff"
