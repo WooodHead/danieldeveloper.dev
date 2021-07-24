@@ -5,13 +5,7 @@ const BasicLayout: React.FC = ({ children }) => {
   return (
     <>
       <TopNavbar />
-      <Box
-        textAlign="center"
-        fontSize="xl"
-        w={["90%", "85%", "80%"]}
-        maxW={800}
-        mx="auto"
-      >
+      <Box fontSize="xl" w={["90%", "85%", "80%"]} maxW={800} mx="auto">
         <Box pt={10} pb={10}>
           {children}
         </Box>

@@ -110,6 +110,12 @@ export const skills: SkillList = {
       image: `${IMAGE_PATH}/vscode.png`,
     },
     {
+      name: "PHP Storm",
+      description: "IDE for PHP work",
+      link: "https://www.jetbrains.com/phpstorm/",
+      image: `${IMAGE_PATH}/phpstorm.png`,
+    },
+    {
       name: "Docker",
       description: "Containers for Development, Shipment and Deployment",
       link: "https://www.docker.com/products/docker-desktop/",
