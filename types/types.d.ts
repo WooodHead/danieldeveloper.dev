@@ -14,6 +14,7 @@ export type PostMatter = {
   publishedAt: string;
   slug: string;
   meta: any;
+  keywords: string;
   isNew?: boolean;
   image?: string;
 };
