@@ -6,10 +6,12 @@ import { BasicLayout } from '../components/Layouts/BasicLayout';
 import MDXComponents from '../components/MDX';
 import NextNProgress from 'nextjs-progressbar';
 import theme from '../styles/theme';
+import Fonts from '../styles/Fonts';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
+      <Fonts />
       <NextNProgress options={{ easing: 'ease', speed: 500 }} />
       <MDXProvider components={MDXComponents}>
         <BasicLayout>
