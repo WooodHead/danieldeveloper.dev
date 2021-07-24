@@ -6,21 +6,22 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html>
-        <Head />
-        <link
-          rel="preload"
-          href="/fonts/PlayFair_Display/PlayfairDisplay-VariableFont_wght.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
+        <Head>
+          <link
+            rel="preload"
+            href="/fonts/playfair-display-v22-latin/playfair-display-v22-latin-500.woff"
+            as="font"
+            type="font/woff"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/source-sans-pro-v14-latin/source-sans-pro-v14-latin-regular.woff"
+            as="font"
+            type="font/ttf"
+            crossOrigin="anonymous"
+          />
+        </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
