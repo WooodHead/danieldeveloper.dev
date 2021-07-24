@@ -1,17 +1,21 @@
 // import App from "next/app";
-import type { AppProps /*, AppContext */ } from "next/app";
-import NextNProgress from "nextjs-progressbar";
-import { ChakraProvider } from "@chakra-ui/react";
-import theme from "../styles/theme";
-import { BasicLayout } from "../components/Layouts/BasicLayout";
+import type { AppProps /*, AppContext */ } from 'next/app';
+import { MDXProvider } from '@mdx-js/react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { BasicLayout } from '../components/Layouts/BasicLayout';
+import MDXComponents from '../components/MDX';
+import NextNProgress from 'nextjs-progressbar';
+import theme from '../styles/theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <NextNProgress options={{ easing: "ease", speed: 500 }} />
-      <BasicLayout>
-        <Component {...pageProps} />
-      </BasicLayout>
+      <NextNProgress options={{ easing: 'ease', speed: 500 }} />
+      <MDXProvider components={MDXComponents}>
+        <BasicLayout>
+          <Component {...pageProps} />
+        </BasicLayout>
+      </MDXProvider>
     </ChakraProvider>
   );
 }

@@ -1,27 +1,48 @@
 ---
-title: "HELLO WORLD"
-publishedAt: "2021-07-15"
-summary: "Visualize my journey through the scenic lands of Norway with rich, stunning pictures and daily travel logs."
-keywords: "laravel,php,programming,tutorial"
+title: 'MDX remote working'
+publishedAt: '2021-07-15'
+summary: 'Visualize my journey through the scenic lands of Norway with rich, stunning pictures and daily travel logs.'
+keywords: 'laravel,php,programming,tutorial'
 isNew: true
 ---
 
-Choosing a service to store data can be confusing and overwhelming for a front-end developer.
-What are all these acronyms? Are the Amazon services named strange on purpose? These and many other questions
-await your journey into the back-end.
+Let's look at what I've defined here:
 
-As a front-end developer turned full-stack, I've spent more time than I'd like to admit trying to figure out the backend.
-Because the backend is harder to _visualize_, I struggled to understand how the pieces fit together. Luckily, I soon found
-out I wasn't alone. There's a support group when confused front-end engineers meet called Twitter.
+- [Axios](https://github.com/axios/axios) - Send HTTP requests from the browser
+- [Babel](https://babeljs.io/) - Use the latest JavaScript features and compile your code to support older browsers
+- [React](https://github.com/facebook/react) - A JavaScript library for building user interfaces
+- [Sass](https://github.com/sass/sass) - CSS with superpowers
 
-Consider this article a "choose your own adventure" piece. I'll ask questions about your requirements
-and then present a few options. Before we can begin our journey, I must first explain the basics. You can
-also jump to the [list of services](/blog/backend#list-of-services) directly.
+These libraries will be the building blocks of my application.
+
+Electron requires you to specify a main entry point into your application. It's mostly boilerplate, but here's a snippet that sets up the browser window and loads the HTML file. I will include a link to the full source code at the end of this post.
 
 ```js
-function parseISO(date) {
-  console.log("things");
+const browserOptions = {
+  width: 800,
+  height: 600,
+  maximizeable: false,
+  icon: path.join(__dirname, '/public/img/logo.png')
+};
 
-  return date.toISOString();
+mainWindow = new BrowserWindow(browserOptions);
+mainWindow.loadURL('file://' + __dirname + '/index.html');
+```
+
+```JSON
+"dependencies": {
+  "axios": "^0.9.1",
+  "babel-preset-es2015": "^6.6.0",
+  "babel-preset-react": "^6.5.0",
+  "babelify": "^7.2.0",
+  "electron-reload": "^0.2.0",
+  "electron-prebuilt": "^0.36.0",
+  "react": "^0.14.8",
+  "react-dom": "^0.14.7"
+},
+"devDependencies": {
+  "electron-packager": "^9.1.0",
+  "node-sass": "^4.5.3",
+  "watchify": "^3.9.0"
 }
 ```
