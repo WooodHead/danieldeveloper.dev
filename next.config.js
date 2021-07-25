@@ -9,6 +9,10 @@ module.exports = {
       'github.com'
     ]
   },
+  i18n: {
+    locales: ['en', 'es'],
+    defaultLocale: 'es'
+  },
   async headers() {
     return [
       {

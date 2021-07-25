@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Icon,
   VStack,
@@ -10,14 +10,15 @@ import {
   Tab,
   TabPanel,
   useColorModeValue,
-  SimpleGrid,
-} from "@chakra-ui/react";
-import { AiTwotoneThunderbolt } from "react-icons/ai";
-import { BiDesktop } from "react-icons/bi";
-import { MotionBox, PageTransitions, Header } from "../Common";
-import Section from "./Section";
-import SkillCard from "./SkillCard";
-import { SkillList, SkillType, TechSkill } from "../../config/skills";
+  SimpleGrid
+} from '@chakra-ui/react';
+import { AiTwotoneThunderbolt } from 'react-icons/ai';
+import { BiDesktop, BiMeteor, BiServer } from 'react-icons/bi';
+import { MotionBox, PageTransitions, Header } from '../Common';
+import Section from './Section';
+import SkillCard from './SkillCard';
+import { SkillList, SkillType, TechSkill } from '../../config/skills';
+import { IconType } from 'react-icons';
 
 interface TechStackProps {
   skills: SkillList;
@@ -27,6 +28,16 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
   const tabs: SkillType[] = Object.values(SkillType).filter(
     (type) => skills[type].length > 0
   );
+
+  const iconTabMapper = (tab: string): IconType => {
+    const icons = {
+      [SkillType.GENERAL]: BiDesktop,
+      [SkillType.BACKEND]: BiServer,
+      [SkillType.FRONTEND]: BiMeteor
+    };
+
+    return icons[tab] || BiDesktop;
+  };
 
   return (
     <>
@@ -38,8 +49,8 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
                 Tech Stack
               </Header>
               <Text
-                fontSize={"xl"}
-                color={useColorModeValue("gray.500", "gray.200")}
+                fontSize={'xl'}
+                color={useColorModeValue('gray.500', 'gray.200')}
                 maxW="lg"
                 textAlign="center"
               >
@@ -56,11 +67,11 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
             >
               <TabList display="flex" flexWrap="wrap">
                 <Tab
-                  bg={useColorModeValue("gray.100", "gray.800")}
-                  color={useColorModeValue("gray.600", "gray.500")}
+                  bg={useColorModeValue('gray.100', 'gray.800')}
+                  color={useColorModeValue('gray.600', 'gray.500')}
                   _selected={{
-                    color: "green.800",
-                    bg: "green.100",
+                    color: 'green.800',
+                    bg: 'green.100'
                   }}
                   mr={2}
                   mt={2}
@@ -73,23 +84,23 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
                 {tabs.map((tab) => (
                   <Tab
                     key={tab}
-                    bg={useColorModeValue("gray.100", "gray.800")}
-                    color={useColorModeValue("gray.500", "gray.500")}
+                    bg={useColorModeValue('gray.100', 'gray.800')}
+                    color={useColorModeValue('gray.500', 'gray.500')}
                     _selected={{
-                      color: useColorModeValue("gray.100", "gray.800"),
-                      bg: useColorModeValue("gray.900", "gray.100"),
+                      color: useColorModeValue('gray.100', 'gray.800'),
+                      bg: useColorModeValue('gray.900', 'gray.100')
                     }}
                     mr={2}
                     mt={2}
                   >
                     <HStack spacing={1}>
-                      <Icon as={BiDesktop} />
+                      <Icon as={iconTabMapper(tab)} />
                       <Text>{tab}</Text>
                     </HStack>
                   </Tab>
                 ))}
               </TabList>
-              <TabPanels minHeight={"45vh"}>
+              <TabPanels minHeight={'45vh'}>
                 <TabPanel px={0} key="all-tab-panel">
                   <MotionBox
                     variants={PageTransitions.container}
