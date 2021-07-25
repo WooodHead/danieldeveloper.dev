@@ -10,7 +10,7 @@ interface ProjectsProps {
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   const router = useRouter();
-  console.log(router.locale, router.locales, router.defaultLocale);
+
   return (
     <PageTransitions.PageSlideFade>
       <PageTransitions.StaggerChildren>

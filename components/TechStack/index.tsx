@@ -19,6 +19,8 @@ import Section from './Section';
 import SkillCard from './SkillCard';
 import { SkillList, SkillType, TechSkill } from '../../config/skills';
 import { IconType } from 'react-icons';
+import { Locales, t } from '../../utils/i18n';
+import { useRouter } from 'next/router';
 
 interface TechStackProps {
   skills: SkillList;
@@ -39,6 +41,8 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
     return icons[tab] || BiDesktop;
   };
 
+  const { locale } = useRouter();
+
   return (
     <>
       <PageTransitions.PageSlideFade>
@@ -54,7 +58,10 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
                 maxW="lg"
                 textAlign="center"
               >
-                A list of my favorite tools and technologies
+                {t(
+                  'A list of my favorite tools and technologies',
+                  Locales[locale]
+                )}
               </Text>
             </VStack>
           </Section>
