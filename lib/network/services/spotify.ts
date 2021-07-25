@@ -1,6 +1,6 @@
-import { AxiosInstance, AxiosResponse } from "axios";
-import querystring from "querystring";
-import ApiRepository, { axios } from "../network";
+import { AxiosInstance, AxiosResponse } from 'axios';
+import querystring from 'querystring';
+import ApiRepository, { axios } from '../network';
 
 export type SpotifyContext = {
   external_urls: {
@@ -15,7 +15,7 @@ export interface AccessTokenResponse {
   access_token: string;
   expires_in: number;
   scope: string;
-  token_type: "Bearer";
+  token_type: 'Bearer';
 }
 
 export type SpotifyImage = {
@@ -65,16 +65,16 @@ export interface CurrentlyPlayingResponse {
 }
 
 export enum SpotifyTrackTypes {
-  artists = "artists",
-  tracks = "tracks",
+  artists = 'artists',
+  tracks = 'tracks'
 }
 
 export default class SpotifyRepository {
   public spotifyRepo: AxiosInstance;
 
-  protected NOW_PLAYING_ENDPOINT = "/me/player/currently-playing";
-  protected TOP_TRACKS_ENDPOINT = "/me/top/tracks";
-  protected TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
+  protected NOW_PLAYING_ENDPOINT = '/me/player/currently-playing';
+  protected TOP_TRACKS_ENDPOINT = '/me/top/tracks';
+  protected TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
 
   protected basicAuth: string;
 
@@ -82,7 +82,7 @@ export default class SpotifyRepository {
     this.basicAuth = this._basicAuth();
 
     this.spotifyRepo = ApiRepository({
-      baseURL: process.env.NEXT_PUBLIC_SPOTIFY_API_URL,
+      baseURL: process.env.NEXT_PUBLIC_SPOTIFY_API_URL
     });
   }
 
@@ -90,13 +90,13 @@ export default class SpotifyRepository {
     return await axios.post(
       this.TOKEN_ENDPOINT,
       querystring.stringify({
-        grant_type: "refresh_token",
-        refresh_token: process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN,
+        grant_type: 'refresh_token',
+        refresh_token: process.env.NEXT_PUBLIC_SPOTIFY_REFRESH_TOKEN
       }),
       {
         headers: {
-          Authorization: `Basic ${this.basicAuth}`,
-        },
+          Authorization: `Basic ${this.basicAuth}`
+        }
       }
     );
   }
@@ -106,8 +106,8 @@ export default class SpotifyRepository {
 
     return await this.spotifyRepo.get(this.NOW_PLAYING_ENDPOINT, {
       headers: {
-        Authorization: `Bearer ${data.access_token}`,
-      },
+        Authorization: `Bearer ${data.access_token}`
+      }
     });
   }
 
@@ -116,14 +116,14 @@ export default class SpotifyRepository {
 
     return await this.spotifyRepo.get(`${this.TOP_TRACKS_ENDPOINT}/${type}`, {
       headers: {
-        Authorization: `Bearer ${data.access_token}`,
-      },
+        Authorization: `Bearer ${data.access_token}`
+      }
     });
   }
 
   private _basicAuth(): string {
     return Buffer.from(
       `${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID}:${process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET}`
-    ).toString("base64");
+    ).toString('base64');
   }
 }

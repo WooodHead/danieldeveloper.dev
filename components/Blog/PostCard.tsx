@@ -9,19 +9,19 @@ import {
   Icon,
   Flex,
   Badge,
-  Divider,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
-import { FaEye } from "react-icons/fa";
-import { PostMatter } from "../../types/types";
-import { PageTransitions } from "../Common";
+  Divider
+} from '@chakra-ui/react';
+import NextLink from 'next/link';
+import { FaEye } from 'react-icons/fa';
+import { PostMatter } from '../../types/types';
+import { PageTransitions } from '../Common';
 
 interface PostCardProps {
   post: PostMatter;
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-  const textColor = useColorModeValue("gray.500", "gray.200");
+  const textColor = useColorModeValue('gray.500', 'gray.200');
 
   return (
     <PageTransitions.CardTransition>
@@ -29,11 +29,11 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
         spacing={1}
         p={4}
         isExternal
-        _hover={{ shadow: "md", textDecoration: "none" }}
+        _hover={{ shadow: 'md', textDecoration: 'none' }}
         borderWidth="1px"
         position="relative"
         rounded="md"
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue('white', 'gray.800')}
         align="left"
       >
         <Heading fontSize="lg" align="left" my="2">
@@ -74,7 +74,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               align="left"
               color={textColor}
             >
-              {post.meta.text || "0 min read time"}
+              {post.meta.text || '0 min read time'}
             </Text>
           </Tooltip>
           <Text fontSize="sm" fontWeight="600" color={textColor}>
@@ -90,7 +90,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
                 align="left"
                 color={textColor}
               >
-                {post.views || 0}
+                0
               </Text>
               <Icon as={FaEye} ml={1} color={textColor} />
             </Flex>
