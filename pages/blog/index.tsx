@@ -1,9 +1,9 @@
-import { SimpleGrid } from "@chakra-ui/layout";
-import PostCard from "../../components/Blog/PostCard";
-import { MotionBox } from "../../components/Common";
-import { PresentationLayout } from "../../components/Layouts/PresentationLayout";
-import { getAllFilesFrontMatter } from "../../lib/mdx";
-import { PostMatter } from "../../types/types";
+import { SimpleGrid } from '@chakra-ui/layout';
+import { PostCard } from '../../components/Blog';
+import { MotionBox } from '../../components/Common';
+import { PresentationLayout } from '../../components/Layouts/PresentationLayout';
+import { getAllFilesFrontMatter } from '../../lib/mdx';
+import { PostMatter } from '../../types/types';
 
 interface BlogPageProps {
   posts: PostMatter[];
@@ -27,7 +27,7 @@ const BlogPage: React.FC<BlogPageProps> = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter("blog");
+  const posts = await getAllFilesFrontMatter('blog');
 
   return { props: { posts } };
 }
