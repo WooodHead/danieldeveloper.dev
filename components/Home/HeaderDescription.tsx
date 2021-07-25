@@ -3,7 +3,7 @@ import { Flex, Avatar, Box } from '@chakra-ui/react';
 import { Header, MotionBox, MotionFlex } from '../../components/Common';
 import { GITHUB } from '../../config/accounts';
 import { useRouter } from 'next/router';
-import { getTranslation, Locales } from '../../utils/i18n';
+import { t, Locales } from '../../utils/i18n';
 
 interface HeaderDescriptionProps {
   animationDuration?: number;
@@ -14,7 +14,9 @@ const HeaderDescription: React.FC<HeaderDescriptionProps> = ({
   animationDuration = 0.5,
   underlineColor = '#ff9400'
 }) => {
-  const { locale } = useRouter();
+  const { locale, defaultLocale } = useRouter();
+
+  const currentLocale: Locales = Locales[locale] || Locales[defaultLocale];
 
   return (
     <Flex direction={['column', 'column', 'row']}>
@@ -60,14 +62,21 @@ const HeaderDescription: React.FC<HeaderDescriptionProps> = ({
           Hey!
         </Header>
         <Box as="h2" fontSize="2xl" fontWeight="400" textAlign="left">
-          {getTranslation('my-name', Locales[locale])} Daniel Romero and I am a
-          Software Developer from Spain 🇪🇸
+          {t('My name is', currentLocale)} Daniel Romero{' '}
+          {t("and I'm a software developer from Spain", currentLocale)} 🇪🇸
         </Box>
         <Box as="h2" fontSize="2xl" fontWeight="400" mt={5} textAlign="left">
-          You can take a look at my{' '}
-          <Link href="/projects">latest projects</Link> or read my{' '}
-          <Link href="/blog">blog posts</Link> where you might find something
-          interesting for you at the moment. 💻😁{' '}
+          {t('You can take a look at', currentLocale)}{' '}
+          <Link href="/projects">
+            {t('my latests projects', currentLocale)}
+          </Link>{' '}
+          {t('or-read', currentLocale)}{' '}
+          <Link href="/blog">{t('blog posts', currentLocale)}</Link>{' '}
+          {t(
+            'where you might find something useful for you at the moment',
+            currentLocale
+          )}
+          . 💻😁
         </Box>
       </MotionFlex>
     </Flex>

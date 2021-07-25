@@ -1,5 +1,5 @@
 import { MDXRemote } from 'next-mdx-remote';
-import { getFileBySlug, getFiles } from '../../lib/mdx';
+import { getFileBySlug, getFiles, mapPostsToStaticPaths } from '../../lib/mdx';
 import { MDXPost } from '../../types/types';
 import { BlogLayout } from '../../components/Layouts/BlogLayout';
 import MDXComponents from '../../components/MDX';
@@ -16,16 +16,7 @@ export async function getStaticPaths({ locales }) {
   const posts = await getFiles('blog');
 
   return {
-    paths: posts
-      .map((post) =>
-        locales.map((locale: string) => ({
-          params: {
-            slug: post.replace(/\.mdx/, '')
-          },
-          locale
-        }))
-      )
-      .flat(),
+    paths: mapPostsToStaticPaths(posts, locales),
     fallback: false
   };
 }

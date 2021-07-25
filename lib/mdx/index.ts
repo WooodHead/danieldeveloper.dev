@@ -67,3 +67,18 @@ export async function getFileBySlug(type: string, slug: string) {
     }
   };
 }
+
+export const mapPostsToStaticPaths = (
+  posts: string[],
+  locales: string[]
+): object[] =>
+  posts
+    .map((post) =>
+      locales.map((locale: string) => ({
+        params: {
+          slug: post.replace(/\.mdx/, '')
+        },
+        locale
+      }))
+    )
+    .flat();

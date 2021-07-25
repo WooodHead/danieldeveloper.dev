@@ -7,10 +7,10 @@ import { useRouter } from 'next/router';
 import { Locales } from '../../../../utils/i18n';
 
 const TopNavbar: React.FC = () => {
-  const { locale, defaultLocale } = useRouter();
+  const { locale } = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const links = navbarLinks(Locales[locale] || Locales[defaultLocale]);
+  const links = navbarLinks(Locales[locale]);
 
   return (
     <>

@@ -1,21 +1,27 @@
 import es from '../locales/es';
-import en from '../locales/en';
+
+/**
+ * We don't need a json file for 'en' translations because is
+ * the default language of the application.
+ */
 
 export enum Locales {
   'es' = 'es',
   'en' = 'en'
 }
 
-export const getTranslation = (
-  translationKey: string,
+export const t = (
+  translation: string,
   locale: Locales = Locales.es
-): string => mapLocaleTranslations(locale)[translationKey];
-
-const mapLocaleTranslations = (locale: Locales): object => {
+): string => {
   const availables = {
-    [Locales.es]: es,
-    [Locales.en]: en
+    [Locales.es]: es
   };
 
-  return availables[locale] || es;
+  // @TODO - Refactor with new optional chaining
+  if (availables[locale] && availables[locale][translation]) {
+    return availables[locale][translation];
+  }
+
+  return translation;
 };

@@ -1,3 +1,5 @@
+import { Locales, t } from '../utils/i18n';
+
 export type HighLight = {
   href: string;
   title: string;
@@ -7,17 +9,17 @@ export type HighLight = {
   };
 };
 
-export const highLights: HighLight[] = [
+export const highLights = (locale: Locales = Locales.es): HighLight[] => [
   {
-    href: "/tech-stack",
-    title: "Tech stack",
+    href: '/tech-stack',
+    title: t('Tech Stack', locale),
     badge: {
-      color: "green",
-      text: "New",
-    },
+      color: 'green',
+      text: 'New'
+    }
   },
   {
-    href: "/projects",
-    title: "Open Source Projects",
-  },
+    href: '/projects',
+    title: t('Open Source Projects', locale)
+  }
 ];

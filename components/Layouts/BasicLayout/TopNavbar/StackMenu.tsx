@@ -12,7 +12,7 @@ import {
 import { BiChevronDown } from 'react-icons/bi';
 import NextLink from 'next/link';
 import { Link } from '../../../../types/types';
-import { getTranslation, Locales } from '../../../../utils/i18n';
+import { t, Locales } from '../../../../utils/i18n';
 import { useRouter } from 'next/router';
 
 interface StackMenuProps {
@@ -65,10 +65,7 @@ export const StackMenu: React.FC<StackMenuProps> = ({
                       )}
 
                       <Text>
-                        {getTranslation(
-                          link.name,
-                          Locales[locale || defaultLocale]
-                        )}
+                        {t(link.name, Locales[locale || defaultLocale])}
                       </Text>
                     </HStack>
                   </MenuItem>
