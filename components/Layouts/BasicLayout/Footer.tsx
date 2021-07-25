@@ -5,10 +5,9 @@ import {
   Box,
   Text,
   useColorModeValue,
-  Flex,
-} from "@chakra-ui/react";
-import { accounts } from "../../../config/accounts";
-import { NowPlaying } from "../../Spotify";
+  Flex
+} from '@chakra-ui/react';
+import { accounts } from '../../../config/accounts';
 
 export const Footer: React.FC = () => {
   return (
@@ -19,27 +18,24 @@ export const Footer: React.FC = () => {
       p={4}
       justifyContent="space-between"
       alignItems="center"
-      w={["100%", "85%", "80%"]}
+      w={['100%', '85%', '80%']}
       maxW={800}
       mx="auto"
     >
       <Flex
-        flexDirection={["column", "column", "row"]}
-        flexFlow={["column-reverse", "column-reverse"]}
-        justifyContent={["center", "space-between"]}
+        flexDirection={['column', 'column', 'row']}
+        flexFlow={['column-reverse', 'column-reverse']}
+        justifyContent={['center', 'space-between']}
         alignItems="center"
         w="100%"
       >
         <Text
           textAlign="center"
           fontSize="sm"
-          color={useColorModeValue("gray.500", "gray.200")}
+          color={useColorModeValue('gray.500', 'gray.200')}
         >
           🔥 {new Date().getFullYear()} Daniel Romero
         </Text>
-
-        {/* <NowPlaying /> */}
-
         <Box textAlign="center">
           {accounts.map((account) => (
             <IconButton

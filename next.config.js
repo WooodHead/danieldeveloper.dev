@@ -6,7 +6,8 @@ module.exports = {
   images: {
     domains: [
       'i.scdn.co', // Spotify Album Art
-      'github.com'
+      'github.com',
+      'spotify.com'
     ]
   },
   i18n: {

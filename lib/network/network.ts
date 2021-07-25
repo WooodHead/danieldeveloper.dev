@@ -1,20 +1,25 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
 import {
   throttleAdapterEnhancer,
-  cacheAdapterEnhancer,
-} from "axios-extensions";
+  cacheAdapterEnhancer
+} from 'axios-extensions';
 
 export { axios };
 
-const ApiRepository = (config?: AxiosRequestConfig): AxiosInstance => {
-  const defaultHeaders = {
-    "Cache-Control": "no-cache",
-    Pragma: "no-cache",
-    "Content-Type": "application/json",
-    Accept: "application/json",
-    ["X-Requested-With"]: "XMLHttpRequest",
-    ...(config.headers || {}),
-  };
+const ApiRepository = (
+  config?: AxiosRequestConfig,
+  isJsonAPI = true
+): AxiosInstance => {
+  const defaultHeaders = isJsonAPI
+    ? {
+        'Cache-Control': 'no-cache',
+        Pragma: 'no-cache',
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        ['X-Requested-With']: 'XMLHttpRequest',
+        ...(config.headers || {})
+      }
+    : {};
 
   return axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -23,10 +28,10 @@ const ApiRepository = (config?: AxiosRequestConfig): AxiosInstance => {
     adapter: throttleAdapterEnhancer(
       cacheAdapterEnhancer(axios.defaults.adapter, {
         enabledByDefault: false,
-        cacheFlag: "useCache",
+        cacheFlag: 'useCache'
       })
     ),
-    ...config,
+    ...config
   });
 };
 
@@ -43,7 +48,7 @@ export const handleAxiosError = (error: AxiosError) => {
 
       return Object.keys(errors)
         .map((key) => errors[key])
-        .join(", ");
+        .join(', ');
     }
 
     if (!error.response.data.message) {
@@ -51,10 +56,10 @@ export const handleAxiosError = (error: AxiosError) => {
     }
 
     return `${error.response.data.message} \n\r  ${
-      error.response.data.detail || ""
+      error.response.data.detail || ''
     }`;
   } else if (error.message) return error.message;
-  else return "Unknown error happens on the server, try later";
+  else return 'Unknown error happens on the server, try later';
 };
 
 export default ApiRepository;

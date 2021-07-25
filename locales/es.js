@@ -16,5 +16,8 @@ module.exports = {
   ['Read the latest blog posts on cutting edge technologies']:
     'Lee las últimas publicaciones del blog sobre tecnologías actuales',
   ['A list of my favorite tools and technologies']:
-    'Mis herramientas y tecnologías favoritas para desarrollar actualmente'
+    'Mis herramientas y tecnologías favoritas para desarrollar actualmente',
+  ['Now playing']: 'Ahora escuchando',
+  ["I'm not listening to any songs right now"]:
+    'No estoy escuchando nada ahora mismo'
 };

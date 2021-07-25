@@ -81,9 +81,12 @@ export default class SpotifyRepository {
   constructor() {
     this.basicAuth = this._basicAuth();
 
-    this.spotifyRepo = ApiRepository({
-      baseURL: process.env.NEXT_PUBLIC_SPOTIFY_API_URL
-    });
+    this.spotifyRepo = ApiRepository(
+      {
+        baseURL: process.env.NEXT_PUBLIC_SPOTIFY_API_URL
+      },
+      false
+    );
   }
 
   private async _getAccessToken(): Promise<AxiosResponse<AccessTokenResponse>> {
