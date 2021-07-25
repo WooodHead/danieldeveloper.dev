@@ -21,7 +21,17 @@ Electron requires you to specify a main entry point into your application. It's 
 
 ![Docker](/assets/images/skills/docker.png)
 
-```js
+```json:package.json
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
+```
+
+```js:browser.js
 const browserOptions = {
   width: 800,
   height: 600,

@@ -3,6 +3,7 @@ import { Global } from '@emotion/react';
 const Fonts: React.FC = () => (
   <Global
     styles={`
+  
     /* playfair-display-regular - latin */
     @font-face {
       font-family: 'Playfair Display';
