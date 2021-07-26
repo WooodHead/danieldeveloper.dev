@@ -1,30 +1,15 @@
 import NextLink from 'next/link';
-import { Flex, Image, Stack, Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { handleAxiosError } from '../../lib/network/network';
-import { SpotifyRepository } from '../../lib/network/services';
 import { CurrentlyPlayingResponse } from '../../lib/network/services/spotify';
 import { Locales, t } from '../../utils/i18n';
 
-export const NowPlaying: React.FC = () => {
+interface NowPlayingProps {
+  song: CurrentlyPlayingResponse;
+}
+
+export const NowPlaying: React.FC<NowPlayingProps> = ({ song }) => {
   const { locale } = useRouter();
-
-  const spotifyRepo = new SpotifyRepository();
-  const [nowPlaying, setNowPlaying] = useState<CurrentlyPlayingResponse>(null);
-
-  useEffect(() => {
-    fetchNowPlaying();
-  }, []);
-
-  const fetchNowPlaying = async () => {
-    try {
-      const response = await spotifyRepo.getNowPlaying();
-      setNowPlaying(response.data);
-    } catch (error) {
-      console.error(handleAxiosError(error));
-    }
-  };
 
   return (
     <div>
@@ -36,18 +21,18 @@ export const NowPlaying: React.FC = () => {
           />
         </svg>
 
-        {nowPlaying ? (
+        {song.is_playing ? (
           <>
             <Text marginLeft="2" marginRight="2">
               {t('Now playing', Locales[locale])}:
             </Text>
             <Text fontWeight="bold">
-              <NextLink href={nowPlaying.item.external_urls.spotify} passHref>
+              <NextLink href={song.item.external_urls.spotify} passHref>
                 <a target="_blank" rel="noopener noreferrer">
-                  {nowPlaying.item.name}
+                  {song.item.name}
                 </a>
               </NextLink>{' '}
-              by {nowPlaying.item.artists[0].name || 'Desconocido'}
+              by {song.item.artists[0].name || 'Desconocido'}
             </Text>
           </>
         ) : (

@@ -33,7 +33,12 @@ export const PresentationLayout: React.FC<PresentationLayoutProps> = ({
 
           <HStack>
             {icons.map((icon) => (
-              <Tooltip hasArrow label={icon.tooltip} placement="top">
+              <Tooltip
+                key={icon.tooltip}
+                hasArrow
+                label={icon.tooltip}
+                placement="top"
+              >
                 <IconButton
                   aria-label={'live'}
                   size="md"

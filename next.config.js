@@ -14,6 +14,7 @@ module.exports = {
     locales: ['en', 'es'],
     defaultLocale: 'es'
   },
+  poweredByHeader: false,
   async headers() {
     return [
       {

@@ -38,11 +38,17 @@ export const WebMenu: React.FC<WebMenuProps> = ({
 }) => {
   const router = useRouter();
 
-  const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const locale = e.target.value || router.defaultLocale;
+  const changeLanguage = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ): void => {
+    const locale = event.target.value || router.defaultLocale;
 
     router.push(router.pathname, router.asPath, { locale });
   };
+
+  const themeBackgroundColor = useColorModeValue('blue.500', 'blue.200');
+  const themeColor = useColorModeValue('gray.200', 'gray.900');
+  const themeIconBackgroundColor = useColorModeValue('white', 'gray.700');
 
   return (
     <>
@@ -66,8 +72,8 @@ export const WebMenu: React.FC<WebMenuProps> = ({
               <StackMenu
                 key={link.name}
                 menuAttributes={{
-                  bg: useColorModeValue('gray.200', 'gray.900'),
-                  color: useColorModeValue('blue.500', 'blue.200')
+                  bg: themeBackgroundColor,
+                  color: themeColor
                 }}
                 links={link.nested}
               />
@@ -94,10 +100,10 @@ export const WebMenu: React.FC<WebMenuProps> = ({
               size="lg"
               icon={<account.icon />}
               aria-label={account.title}
-              bg={useColorModeValue('white', 'gray.700')}
+              bg={themeIconBackgroundColor}
               _hover={{
                 textDecoration: 'none',
-                bg: useColorModeValue('gray.200', 'gray.900')
+                bg: themeBackgroundColor
               }}
             />
           </Tooltip>
@@ -109,8 +115,11 @@ export const WebMenu: React.FC<WebMenuProps> = ({
           onChange={changeLanguage}
           defaultValue={router.locale}
         >
-          <option value={Locales.es}>ES</option>
-          <option value={Locales.en}>EN</option>
+          {router.locales.map((locale: string) => (
+            <option key={locale} value={locale}>
+              {locale.toUpperCase()}
+            </option>
+          ))}
         </Select>
       </Flex>
     </>

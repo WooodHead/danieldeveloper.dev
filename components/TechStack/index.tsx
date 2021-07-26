@@ -43,6 +43,13 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
 
   const { locale } = useRouter();
 
+  const themeColor = useColorModeValue('gray.500', 'gray.200');
+  const themeBackgroundColor = useColorModeValue('gray.100', 'gray.800');
+  const themeBackgroundColorOnSelected = useColorModeValue(
+    'gray.900',
+    'gray.100'
+  );
+
   return (
     <>
       <PageTransitions.PageSlideFade>
@@ -54,7 +61,7 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
               </Header>
               <Text
                 fontSize={'xl'}
-                color={useColorModeValue('gray.500', 'gray.200')}
+                color={themeColor}
                 maxW="lg"
                 textAlign="center"
               >
@@ -74,8 +81,8 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
             >
               <TabList display="flex" flexWrap="wrap">
                 <Tab
-                  bg={useColorModeValue('gray.100', 'gray.800')}
-                  color={useColorModeValue('gray.600', 'gray.500')}
+                  bg={themeBackgroundColor}
+                  color={themeColor}
                   _selected={{
                     color: 'green.800',
                     bg: 'green.100'
@@ -91,11 +98,11 @@ export const TechStack: React.FC<TechStackProps> = ({ skills }) => {
                 {tabs.map((tab) => (
                   <Tab
                     key={tab}
-                    bg={useColorModeValue('gray.100', 'gray.800')}
-                    color={useColorModeValue('gray.500', 'gray.500')}
+                    bg={themeBackgroundColor}
+                    color={themeColor}
                     _selected={{
-                      color: useColorModeValue('gray.100', 'gray.800'),
-                      bg: useColorModeValue('gray.900', 'gray.100')
+                      color: themeBackgroundColor,
+                      bg: themeBackgroundColorOnSelected
                     }}
                     mr={2}
                     mt={2}

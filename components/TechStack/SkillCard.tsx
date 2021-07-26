@@ -1,4 +1,4 @@
-import NextLink from "next/link";
+import NextLink from 'next/link';
 import {
   HStack,
   VStack,
@@ -7,11 +7,11 @@ import {
   Box,
   Link,
   Image,
-  Skeleton,
-} from "@chakra-ui/react";
-import { usePalette } from "react-palette";
-import { MotionBox, PageTransitions } from "../Common";
-import { TechSkill } from "../../config/skills";
+  Skeleton
+} from '@chakra-ui/react';
+import { usePalette } from 'react-palette';
+import { MotionBox, PageTransitions } from '../Common';
+import { TechSkill } from '../../config/skills';
 
 const SkillCard: React.FC<TechSkill> = ({ name, description, link, image }) => {
   const { data, loading } = usePalette(image);
@@ -23,15 +23,15 @@ const SkillCard: React.FC<TechSkill> = ({ name, description, link, image }) => {
           <Link isExternal>
             <HStack
               p={4}
-              bg={useColorModeValue("white", "gray.800")}
+              bg={useColorModeValue('white', 'gray.800')}
               rounded="xl"
               borderWidth="1px"
-              borderColor={useColorModeValue("gray.100", "gray.700")}
+              borderColor={useColorModeValue('gray.100', 'gray.700')}
               w="100%"
               textAlign="left"
               align="start"
               spacing={4}
-              _hover={{ shadow: "md" }}
+              _hover={{ shadow: 'md' }}
             >
               <Box
                 rounded="lg"
@@ -54,6 +54,7 @@ const SkillCard: React.FC<TechSkill> = ({ name, description, link, image }) => {
                   <Skeleton height={26} width={26} rounded="md" />
                 ) : (
                   <Image
+                    alt="skill-image"
                     src={image}
                     height={26}
                     width={26}
@@ -75,7 +76,7 @@ const SkillCard: React.FC<TechSkill> = ({ name, description, link, image }) => {
                   </Text>
                   <Text
                     fontSize="sm"
-                    color={useColorModeValue("gray.500", "gray.200")}
+                    color={useColorModeValue('gray.500', 'gray.200')}
                   >
                     {description}
                   </Text>
