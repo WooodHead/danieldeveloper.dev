@@ -70,7 +70,7 @@ const HeaderDescription: React.FC<HeaderDescriptionProps> = ({
           <Link href="/projects">
             {t('my latests projects', currentLocale)}
           </Link>{' '}
-          {t('or-read', currentLocale)}{' '}
+          {t('or read my', currentLocale)}{' '}
           <Link href="/blog">{t('blog posts', currentLocale)}</Link>{' '}
           {t(
             'where you might find something useful for you at the moment',
