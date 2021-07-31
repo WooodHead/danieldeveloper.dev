@@ -23,6 +23,30 @@ module.exports = {
       }
     ];
   },
+  async redirects() {
+    return [
+      /**
+       * This two routes it's because the search engines
+       * registered my old portfolio routes with my actual domain
+       *  and they throws 404. I'll redirect to my actual /projects
+       */
+      {
+        source: '/projects/gallery-app',
+        destination: '/projects',
+        permanent: false
+      },
+      {
+        source: '/projects/portfolio-website',
+        destination: '/projects',
+        permanent: false
+      },
+      {
+        source: '/contact',
+        destination: '/',
+        permanent: false
+      }
+    ];
+  },
   webpack: (config, { dev, isServer }) => {
     // if (isServer) {
     //   require("./scripts/generate-sitemap");

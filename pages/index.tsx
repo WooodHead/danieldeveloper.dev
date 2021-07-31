@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { Divider } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
 import { Home } from '../components/Home/';
@@ -15,6 +16,9 @@ interface IndexPageProps {
 
 const IndexPage: React.FC<IndexPageProps> = ({ song, tracks }) => (
   <>
+    <Head>
+      <title>Daniel Developer .DEV</title>
+    </Head>
     <Home />
     <NowPlaying song={song} />
     <Divider my="3" />

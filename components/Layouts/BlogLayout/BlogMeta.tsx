@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import Head from "next/head";
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 
-import { PostMatter } from "../../../types/types";
+import { PostMatter } from '../../../types/types';
 
 interface BlogMetaProps {
   frontMatter: PostMatter;
@@ -15,7 +15,6 @@ export const BlogMeta: React.FC<BlogMetaProps> = ({ frontMatter }) => {
       <title>{frontMatter.title}</title>
       <meta name="description" content={frontMatter.summary} />
       <meta name="keywords" content={frontMatter.keywords} />
-      <meta name="robots" content="follow, index" />
       <meta
         property="og:url"
         content={`https://danieldeveloper.dev${router.asPath}`}

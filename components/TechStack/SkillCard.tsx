@@ -54,7 +54,7 @@ const SkillCard: React.FC<TechSkill> = ({ name, description, link, image }) => {
                   <Skeleton height={26} width={26} rounded="md" />
                 ) : (
                   <Image
-                    alt="skill-image"
+                    alt={name}
                     src={image}
                     height={26}
                     width={26}

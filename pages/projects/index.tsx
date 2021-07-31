@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { GetStaticProps, NextPageContext } from 'next';
 import { GithubRepository } from '../../lib/network/services';
 import { GithubRepositoryType } from '../../lib/network/types/GithubRepositoryType';
@@ -13,19 +14,24 @@ const ProjectsPage: React.FC<ProjectsPageProps> = ({
   skeletonLoaders = 8
 }) => {
   return (
-    <PresentationLayout
-      title="Open Source Projects"
-      subtitle="This page lists some of the open source repositories I have published
+    <>
+      <Head>
+        <title>Daniel Developer - Projects</title>
+      </Head>
+      <PresentationLayout
+        title="Open Source Projects"
+        subtitle="This page lists some of the open source repositories I have published
       or contributed to"
-    >
-      {projects.length > 0 ? (
-        <Projects projects={projects} />
-      ) : (
-        [...Array(skeletonLoaders).keys()].map((index) => (
-          <ProjectCardSkeleton key={index} />
-        ))
-      )}
-    </PresentationLayout>
+      >
+        {projects.length > 0 ? (
+          <Projects projects={projects} />
+        ) : (
+          [...Array(skeletonLoaders).keys()].map((index) => (
+            <ProjectCardSkeleton key={index} />
+          ))
+        )}
+      </PresentationLayout>
+    </>
   );
 };
 

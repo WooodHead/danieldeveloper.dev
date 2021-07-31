@@ -7,6 +7,7 @@ export default class Document extends NextDocument {
     return (
       <Html>
         <Head>
+          <meta name="robots" content="follow, index" />
           <meta content="#ffffff" name="theme-color" />
           <meta content="#ffffff" name="msapplication-TileColor" />
           <link
