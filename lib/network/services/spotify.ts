@@ -46,9 +46,10 @@ export interface SpotifyItem extends SpotifyContext {
     isrc: string;
   };
   name: string;
-  popularity: number;
   preview_url: string;
   track_number: number;
+  id: string;
+  popularity: number;
 }
 
 export interface SpotifyArtist extends SpotifyContext {
@@ -73,7 +74,7 @@ export default class SpotifyRepository {
   public spotifyRepo: AxiosInstance;
 
   protected NOW_PLAYING_ENDPOINT = '/me/player/currently-playing';
-  protected TOP_TRACKS_ENDPOINT = '/me/top/tracks';
+  protected TOP_TRACKS_ENDPOINT = '/me/top';
   protected TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token';
 
   protected basicAuth: string;

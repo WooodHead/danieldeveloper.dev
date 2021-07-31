@@ -19,5 +19,6 @@ module.exports = {
     'Mis herramientas y tecnologías favoritas para desarrollar actualmente',
   ['Now playing']: 'Ahora escuchando',
   ["I'm not listening to any songs right now"]:
-    'No estoy escuchando nada ahora mismo'
+    'No estoy escuchando nada ahora mismo',
+  ['Top tracks']: 'Top canciones'
 };

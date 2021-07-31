@@ -8,16 +8,17 @@ export default async function handler(
   if (req.method === 'GET') {
     try {
       const spotifyRepo = new SpotifyRepository();
-      const response = await spotifyRepo.getNowPlaying();
+      const response = await spotifyRepo.getTopTracks();
 
       res.setHeader(
         'Cache-Control',
-        'public, s-maxage=60, stale-while-revalidate=30'
+        'public, s-maxage=7200, stale-while-revalidate=3600'
       );
 
-      return res.status(200).json(response.data || { is_playing: false });
+      return res.status(200).json(response.data || { items: [] });
     } catch (error) {
-      return res.status(200).json({ is_playing: false });
+      console.error(error);
+      return res.status(200).json({ items: [] });
     }
   }
 
